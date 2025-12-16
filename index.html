@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Predict Likes ❤️</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            width: 380px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+
+        #result {
+            margin-top: 18px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Predict Likes ❤️</h2>
+
+        <input type="number" id="word_count" placeholder="Word Count">
+        <input type="number" id="char_count" placeholder="Character Count">
+        <input type="number" id="has_media" placeholder="Has Media (0 or 1)">
+        <input type="number" id="hour" placeholder="Hour (0-23)">
+        <input type="number" id="sentiment" placeholder="Sentiment Score">
+
+        <button onclick="predictLikes()">Predict</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function predictLikes() {
+            const payload = {
+                word_count: Number(document.getElementById("word_count").value),
+                char_count: Number(document.getElementById("char_count").value),
+                has_media: Number(document.getElementById("has_media").value),
+                hour: Number(document.getElementById("hour").value),
+                sentiment: Number(document.getElementById("sentiment").value)
+            };
+
+            try {
+                const response = await fetch("http://127.0.0.1:5000/predict", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                document.getElementById("result").innerText =
+                    "Predicted Likes: " + data.predicted_likes;
+            }
+            catch (err) {
+                document.getElementById("result").innerText =
+                    "❌ Error connecting to API";
+            }
+        }
+    </script>
+</body>
+</html>
