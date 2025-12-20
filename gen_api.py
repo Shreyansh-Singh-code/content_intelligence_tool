@@ -1,4 +1,4 @@
-# app_generator.py (separate file from your Week 2 predictor)
+
 from flask import Flask, request, jsonify
 from generator import SimpleTweetGenerator
 from genenerator_ai import AITweetGenerator
