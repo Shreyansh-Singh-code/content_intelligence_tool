@@ -40,11 +40,11 @@ base/
 ├── /tweet_generators
 │   ├── generator_ai.py       # GPT-2 based AI generator
 │   ├── advanced_generator.py # Brand voice & smart generator
-│   └── generator_simple.py   # Template-based generator (renamed from generator.py)
+│   └── generator_simple.py   # Template-based generator 
 │
 ├── /api
-│   ├── like_predictor_api.py # Like prediction API (renamed from api.py)
-│   └── generator_api.py      # Tweet generation API (renamed from gen_api.py)
+│   ├── like_predictor_api.py # Like prediction API 
+│   └── generator_api.py      # Tweet generation API 
 │
 └── /testing
     ├── test.py               # Basic API tests
@@ -327,10 +327,6 @@ Ensure both APIs are running before executing tests.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🙏 Acknowledgments
 
 - TextBlob for sentiment analysis
@@ -342,6 +338,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For questions, issues, or contributions, please open an issue on GitHub.
 
----
+## Author
+Shreyansh Singh
+Btech, IITD
 
 **Note**: The AI generator requires significant computational resources. For production use, consider using GPU acceleration or cloud-based inference services.
